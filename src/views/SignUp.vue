@@ -4,10 +4,10 @@
     <div class="card">
       <p>新規登録</p>
       <div class="form">
-        <input type="text" placeholder="ユーザーネーム">
-        <input type="text" placeholder="プロフィール">
-        <input type="text" placeholder="メールアドレス">
-        <input type="text" placeholder="パスワード">
+        <input type="text" placeholder="ユーザーネーム" v-model="name" />
+        <input type="text" placeholder="プロフィール" v-model="profile" />
+        <input type="email" placeholder="メールアドレス" v-model="email" />
+        <input type="password" placeholder="パスワード" v-model="password" />
         <button @click="auth">新規登録</button>
       </div>
     </div>
@@ -16,9 +16,36 @@
 
 <script>
 import HeaderAuth from "../components/HeaderAuth";
+import axios from "axios";
 export default {
+  data() {
+    return {
+      name: "",
+      profile: "",
+      email: "",
+      password: ""
+    };
+  },
   components: {
     HeaderAuth
+  },
+  methods: {
+    auth() {
+      axios
+        .post("herokuのURL/api/register", {
+          name: this.name,
+          profile: this.profile,
+          email: this.email,
+          password: this.password
+        })
+        .then(response => {
+          console.log(response);
+          this.$router.response("/");
+        })
+        .catch(error => {
+          alert(error);
+        });
+    }
   }
 };
 </script>

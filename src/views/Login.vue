@@ -1,14 +1,12 @@
 <template>
   <div>
-    <div>
-      <HeaderAuth />
-    </div>
+    <HeaderAuth />
     <div class="card">
       <p>ログイン</p>
       <div class="form">
-        <input type="text" placeholder="メールアドレス">
-        <input type="text" placeholder="パスワード">
-        <button>ログイン</button>
+        <input type="email" placeholder="メールアドレス" v-model="email" />
+        <input type="password" placeholder="パスワード" v-model="password">
+        <button @click="auth">ログイン</button>
       </div>
     </div>
   </div>
@@ -17,8 +15,22 @@
 <script>
 import HeaderAuth from "../components/HeaderAuth";
 export default {
+  data() {
+    return {
+      email: "",
+      password: ""
+    };
+  },
   components:{
     HeaderAuth
+  },
+  methods: {
+    auth() {
+      this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password
+      });
+    }
   }
 };
 </script>
