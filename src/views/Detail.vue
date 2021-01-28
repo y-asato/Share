@@ -45,7 +45,7 @@ export default {
   methods: {
     send() {
       axios
-        .post("herokuのURL/api/comment", {
+        .post("https://thawing-crag-86173.herokuapp.com/api/comment", {
           share_id: this.id,
           user_id: this.$store.state.user.id,
           content: this.content,
@@ -61,7 +61,7 @@ export default {
     },
     comment() {
       axios
-        .get("herokuのURL/api/shares/" + this.id)
+        .get("https://thawing-crag-86173.herokuapp.com/api/shares/" + this.id)
         .then((response) => {
           this.data = response.data.comment;
         });
