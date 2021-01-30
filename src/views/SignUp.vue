@@ -40,7 +40,7 @@ export default {
         })
         .then(response => {
           console.log(response);
-          this.$router.response("/");
+          this.$router.replace("/");
         })
         .catch(error => {
           alert(error);
