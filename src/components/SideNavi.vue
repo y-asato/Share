@@ -10,7 +10,7 @@
         <img src="../assets/profile.png" alt="" class="icon">
         <p>プロフィール</p>
       </div>
-      <div class="flex icon-field" @click="$store.dispatch('/logout')">
+      <div class="flex icon-field" @click="$store.dispatch('logout')">
         <img src="../assets/logout.png" alt="" class="icon">
         <p>ログアウト</p>
       </div>
